@@ -36,8 +36,9 @@ export const RadioButton = styled.button<IChecked>`
     }
   }
 
-  input {
+  .radioButton__icons {
     max-width: 18px;
     margin: 13px;
+    color: ${({ checked }) => (checked ? '#ffd74f' : '')};
   }
 `;

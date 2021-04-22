@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
+import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 import Button from '../Button';
 import { ContainerRoleSelector, RadioButton } from './styles';
 
@@ -6,21 +7,35 @@ const LandingPageRadioButtons: React.FC = () => {
   const [teacherChecked, setTeacherChecked] = useState(true);
   const [studentChecked, setStudentChecked] = useState(false);
 
-  const handleCheckRadioChange = (value: string) => {
-    if (value === 'student') {
-      setTeacherChecked(!teacherChecked);
-      setStudentChecked(!studentChecked);
+  const handleCheckRadioChange = (event: React.MouseEvent<HTMLElement>) => {
+    const input = event.target as HTMLElement;
+
+    if (input.innerText === "I'M A STUDENT") {
+      setTeacherChecked(false);
+      setStudentChecked(true);
     }
 
-    if (value === 'teacher') {
-      setTeacherChecked(!teacherChecked);
-      setStudentChecked(!studentChecked);
+    if (input.innerText === "I'M A TEACHER") {
+      setTeacherChecked(true);
+      setStudentChecked(false);
     }
   };
 
-  const buttonText: { label: string; value: string; checked: boolean }[] = [
-    { label: "I'M A TEACHER", value: 'teacher', checked: teacherChecked },
-    { label: "I'M A STUDENT", value: 'student', checked: studentChecked },
+  const buttonText: {
+    label: string;
+    value: string;
+    checked: boolean;
+  }[] = [
+    {
+      label: "I'M A TEACHER",
+      value: 'teacher',
+      checked: teacherChecked,
+    },
+    {
+      label: "I'M A STUDENT",
+      value: 'student',
+      checked: studentChecked,
+    },
   ];
 
   return (
@@ -28,16 +43,21 @@ const LandingPageRadioButtons: React.FC = () => {
       <ContainerRoleSelector>
         <div>
           {buttonText.map(el => (
-            <RadioButton checked={el.checked} key={el.value}>
-              <input
-                type="radio"
-                checked={el.checked}
-                value={el.value}
-                onChange={e => handleCheckRadioChange(e.target.value)}
-              />
-              <label htmlFor={el.value} key={el.value}>
-                {el.label}
-              </label>
+            <RadioButton
+              checked={el.checked}
+              key={el.value}
+              onClick={event => handleCheckRadioChange(event)}
+            >
+              {el.checked ? (
+                <div className="radioButton__icons">
+                  <FaCheckCircle />
+                </div>
+              ) : (
+                <div className="radioButton__icons">
+                  <FaRegCircle />
+                </div>
+              )}
+              <span>{el.label}</span>
             </RadioButton>
           ))}
         </div>
