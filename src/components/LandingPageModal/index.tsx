@@ -62,7 +62,12 @@ const LandingPageModal: React.FC<IModalProps> = ({
           </div>
           <div className="landingPageModal__container__inputName">
             Password:
-            <input type="text" />
+            <input
+              className="landingPageModal__container__inputName__clearIcon"
+              type={closeEye ? 'text' : 'password'}
+              maxLength={10}
+              size={10}
+            />
             <div className="landingPageModal__container__eyeIcon">
               <div
                 aria-hidden="true"

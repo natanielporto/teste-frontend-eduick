@@ -72,6 +72,12 @@ export const Container = styled.div`
       background-color: rgba(255, 255, 255, 0.4);
       border: 1px solid #fff;
       border-radius: 4px;
+      color: white;
+      padding-left: 28px;
+
+      ::placeholder {
+        color: white;
+      }
     }
 
     .landingPageModal__container__eyeIcon {

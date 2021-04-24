@@ -40,7 +40,7 @@ export const NavBar = styled.div`
         margin: 0 47px;
         color: white;
         font-size: 14px;
-        font-weigh: 700;
+        font-weight: 700;
       }
     }
   }

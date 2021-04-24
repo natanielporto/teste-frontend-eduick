@@ -42,7 +42,7 @@ const Container = styled.div`
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    padding-left: 12px;
+    padding-left: 14px;
   }
 `;
 
