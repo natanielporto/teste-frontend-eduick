@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 import Button from '../Button';
 import { ContainerRoleSelector, RadioButton } from './styles';

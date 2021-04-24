@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import LandingPageRadioButtons from '../../components/LandingPageRadioButtons';
+import LandingPageModal from '../../components/LandingPageModal';
 import { NavBar, MidSectionLeft, MidSectionRight, Footer } from './styles';
 
 import logoEduick from '../../assets/logoEduick.svg';
@@ -11,10 +12,22 @@ import student from '../../assets/student.svg';
 import rightLandingPageEffect from '../../assets/rightLandingPageEffect.svg';
 
 const LandingPage: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  const handleModalOpen = () => {
+    setShowModal(true);
+  };
+
+  useEffect(() => {
+    const { width } = window.screen;
+    setScreenWidth(width);
+  }, []);
+
   return (
     <>
       <NavBar>
-        {window.screen.width <= 400 ? (
+        {screenWidth <= 400 ? (
           <div className="landingPage__navBar__mobile">
             <img src={hamburguer} alt="Options menu" />
             <a href="/">
@@ -36,8 +49,19 @@ const LandingPage: React.FC = () => {
                 <Link to="about">About us</Link>
               </div>
             </div>
-            <Button origin="landingPage" text="Get Started" />
+            <Button
+              origin="landingPage"
+              text="Get Started"
+              handleModalOpen={handleModalOpen}
+            />
           </div>
+        )}
+        {showModal && (
+          <LandingPageModal
+            screenWidth={screenWidth}
+            showModal={showModal}
+            handleCloseLandingPageModal={() => setShowModal(false)}
+          />
         )}
       </NavBar>
       <MidSectionLeft>
