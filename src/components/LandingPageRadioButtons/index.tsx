@@ -3,7 +3,7 @@ import { FaCheckCircle, FaRegCircle } from 'react-icons/fa';
 import Button from '../Button';
 import { ContainerRoleSelector, RadioButton } from './styles';
 
-const LandingPageRadioButtons: React.FC = () => {
+function LandingPageRadioButtons(): JSX.Element {
   const [teacherChecked, setTeacherChecked] = useState(true);
   const [studentChecked, setStudentChecked] = useState(false);
 
@@ -65,6 +65,6 @@ const LandingPageRadioButtons: React.FC = () => {
       </ContainerRoleSelector>
     </>
   );
-};
+}
 
 export default LandingPageRadioButtons;

@@ -10,6 +10,10 @@ export const ContainerLandingPage = styled.button`
   color: rgba(122, 87, 253, 1);
   font-weight: 700;
   z-index: 2;
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export const ContainerDashboard = styled.button`

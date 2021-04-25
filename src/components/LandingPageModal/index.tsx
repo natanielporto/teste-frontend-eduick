@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsX } from 'react-icons/bs';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -12,11 +12,11 @@ interface IModalProps {
   handleCloseLandingPageModal: () => void;
 }
 
-const LandingPageModal: React.FC<IModalProps> = ({
+function LandingPageModal({
   showModal,
   screenWidth,
   handleCloseLandingPageModal,
-}) => {
+}: IModalProps): JSX.Element {
   const isMobile = screenWidth <= 400;
 
   const [closeEye, setCloseEye] = useState(false);
@@ -99,7 +99,7 @@ const LandingPageModal: React.FC<IModalProps> = ({
       </Background>
     </>
   );
-};
+}
 
 LandingPageModal.propTypes = {
   showModal: PropTypes.bool.isRequired,

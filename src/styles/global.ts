@@ -12,6 +12,8 @@ export default createGlobalStyle`
     background: rgba(122, 87, 253, 1);
     color: #fff;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    height: 100vh;
   }
 
   body, input, button {

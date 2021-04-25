@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import IsMobile from '../../helpers/IsMobile';
 import Button from '../../components/Button';
 import DashboardClassCard from '../../components/DashboardClassCard';
-import { Body, NavBarContainer, NavBar, MidSection, Footer } from './styles';
+import {
+  Body,
+  NavBarContainer,
+  NavBar,
+  MidSection,
+  NumberOfPages,
+  Footer,
+} from './styles';
 
 import detail from '../../assets/detail.svg';
 import meeting from '../../assets/meeting.svg';
@@ -62,20 +70,6 @@ const Dashboard: React.FC = () => {
       numberOfLessons: 10,
       nameOfCourse: 'Master English: Improve Your Speaking',
     },
-    {
-      image: classImage,
-      alt: 'Students paying attention to class',
-      stars: 3,
-      numberOfLessons: 10,
-      nameOfCourse: 'Master English: Improve Your Speaking',
-    },
-    {
-      image: classImage,
-      alt: 'Students paying attention to class',
-      stars: 3,
-      numberOfLessons: 10,
-      nameOfCourse: 'Master English: Improve Your Speaking',
-    },
   ];
 
   const footerDisclaimerMessage = (
@@ -89,7 +83,7 @@ const Dashboard: React.FC = () => {
     <Body>
       <NavBarContainer>
         <NavBar>
-          {window.screen.width <= 400 ? (
+          {IsMobile() ? (
             <div className="navBar__dashboard__mobile">
               <a href="/">
                 <h1>
@@ -153,7 +147,6 @@ const Dashboard: React.FC = () => {
             />
           </div>
         </div>
-
         <section className="dashboard__midSection__cardsSection">
           {classes.map(el => (
             <DashboardClassCard
@@ -165,6 +158,13 @@ const Dashboard: React.FC = () => {
             />
           ))}
         </section>
+        <div className="dashboard__midSection__pageCounterContainer">
+          <div className="dashboard__midSection__pageCounter">
+            <NumberOfPages />
+            <NumberOfPages />
+            <NumberOfPages />
+          </div>
+        </div>
       </MidSection>
       <Footer>{footerDisclaimerMessage}</Footer>
     </Body>

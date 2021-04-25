@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
   background-color: #e5e5e5;
+  padding-bottom: 1px;
 `;
 
 export const NavBarContainer = styled.div`
@@ -46,11 +47,7 @@ export const NavBar = styled.div`
 `;
 
 export const MidSection = styled.div`
-  background-color: ##e5e5e5;
-  width: 1440px;
-  max-height: 1440px;
   width: 100%;
-  height: 100%;
 
   .dashboard__midSection__topContainer {
     max-width: 1140px;
@@ -58,7 +55,6 @@ export const MidSection = styled.div`
     background-color: white;
     margin: auto;
     display: flex;
-    justify-content: space-around;
     position: relative;
 
     .dashboard__midSection__leftImage {
@@ -67,7 +63,6 @@ export const MidSection = styled.div`
     }
 
     img {
-      padding-right: 116px;
       padding-top: 30px;
     }
   }
@@ -94,11 +89,32 @@ export const MidSection = styled.div`
 
   .dashboard__midSection__cardsSection {
     max-width: 1140px;
+    min-height: 700px;
     margin: auto;
     display: grid;
-    grid-gap: 0 30px;
+    grid-column-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
   }
+
+  div.dashboard__midSection__pageCounterContainer {
+    width: 100%;
+    margin: auto;
+  }
+
+  div.dashboard__midSection__pageCounter {
+    display: flex;
+    justify-content: center;
+    margin: 35px auto 75px auto;
+  }
+`;
+
+export const NumberOfPages = styled.div`
+  background-color: #7a57fd;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  margin: 5px;
+  margin-bottom: 5 0px;
 `;
 
 export const Footer = styled.div`

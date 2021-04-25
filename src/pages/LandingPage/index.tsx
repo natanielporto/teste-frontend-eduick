@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { CgMenuLeftAlt } from 'react-icons/cg';
 import Button from '../../components/Button';
 import LandingPageRadioButtons from '../../components/LandingPageRadioButtons';
 import LandingPageModal from '../../components/LandingPageModal';
 import { NavBar, MidSectionLeft, MidSectionRight, Footer } from './styles';
 
 import logoEduick from '../../assets/logoEduick.svg';
-import hamburguer from '../../assets/hamburguer.svg';
 import student from '../../assets/student.svg';
+import studentMobile from '../../assets/studentMobile.svg';
 import rightLandingPageEffect from '../../assets/rightLandingPageEffect.svg';
+import IsMobile from '../../helpers/IsMobile';
 
 const LandingPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -27,9 +29,9 @@ const LandingPage: React.FC = () => {
   return (
     <>
       <NavBar>
-        {screenWidth <= 400 ? (
+        {IsMobile() ? (
           <div className="landingPage__navBar__mobile">
-            <img src={hamburguer} alt="Options menu" />
+            <CgMenuLeftAlt onClick={handleModalOpen} size={24} />
             <a href="/">
               <h1>
                 <img src={logoEduick} alt="Eduick Logo" />
@@ -68,7 +70,7 @@ const LandingPage: React.FC = () => {
         <section className="landingPage__midSectionLeft">
           <img
             className="landingPage__midSectionLeft__image"
-            src={student}
+            src={IsMobile() ? studentMobile : student}
             alt="Student writing on a note book"
           />
         </section>

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ContainerDashboard, ContainerLandingPage } from './styles';
@@ -9,11 +8,7 @@ interface IWriteProps {
   handleModalOpen?: () => void;
 }
 
-const Button: React.FC<IWriteProps> = ({
-  origin,
-  text,
-  handleModalOpen,
-}: IWriteProps) => {
+function Button({ origin, text, handleModalOpen }: IWriteProps): JSX.Element {
   return origin === 'landingPage' ? (
     <ContainerLandingPage onClick={handleModalOpen}>
       {text}
@@ -21,7 +16,7 @@ const Button: React.FC<IWriteProps> = ({
   ) : (
     <ContainerDashboard>{text}</ContainerDashboard>
   );
-};
+}
 
 Button.defaultProps = {
   handleModalOpen: Function,

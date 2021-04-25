@@ -5,11 +5,10 @@ export const NavBar = styled.div`
   margin: auto;
 
   .landingPage__navBar__mobile {
-    margin: 27px 30px;
+    margin: 27px 30px 60px 30px;
 
-    img {
-      width: 18px;
-      height: 12px;
+    @media (max-width: 400px) {
+      margin-bottom: 50px;
     }
 
     a img {
@@ -51,11 +50,21 @@ export const MidSectionLeft = styled.div`
   margin: auto;
   position: relative;
 
+  @media (max-width: 400px) {
+    width: 0px;
+  }
+
   .landingPage__midSectionLeft__image {
     position: absolute;
     right: 595px;
     z-index: 5;
     max-height: 923px;
+
+    @media (max-width: 400px) {
+      right: -170px;
+      height: 500px;
+      top: 400px;
+    }
   }
 `;
 
@@ -63,6 +72,10 @@ export const MidSectionRight = styled.div`
   max-width: 1131px;
   position: relative;
   margin: auto;
+
+  @media (max-width: 400px) {
+    width: 360px;
+  }
 
   .landingPage__midSectionRight {
     position: absolute;
@@ -73,18 +86,31 @@ export const MidSectionRight = styled.div`
     height: 628px;
     width: 601px;
 
+    @media (max-width: 400px) {
+      width: 336px;
+      padding: 0 24px 0 8px;
+    }
     .landingPage__midSectionRight__container {
       position: relative;
 
       .LandingPage__MidSectionRight__container__firstH2 {
         line-height: 45px;
         font-size: 48px;
+
+        @media (max-width: 400px) {
+          font-size: 56px;
+        }
       }
 
       .landingPage__midSectionRight__container__secondH2 {
         font-weight: 700;
         font-size: 48px;
         color: #ffd74f;
+
+        @media (max-width: 400px) {
+          font-size: 28px;
+          margin-bottom: 60px;
+        }
       }
     }
 
@@ -92,6 +118,10 @@ export const MidSectionRight = styled.div`
       max-width: 496px;
       line-height: 30px;
       margin: 50px 0;
+
+      @media (max-width: 400px) {
+        display: none;
+      }
     }
 
     input {
@@ -105,25 +135,42 @@ export const MidSectionRight = styled.div`
       ::placeholder {
         color: white;
       }
+
+      @media (max-width: 400px) {
+        padding-left: 12px;
+        width: 100%;
+      }
     }
 
     img {
       position: absolute;
       left: 520px;
       top: -215px;
+
+      @media (max-width: 400px) {
+        display: none;
+      }
     }
 
     div.landingPage__midSectionRight__buttons {
       display: flex;
       margin-top: 30px;
+
+      @media (max-width: 400px) {
+        width: 100%;
+      }
     }
   }
 `;
 
 export const Footer = styled.div`
   background-color: #200e64;
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 302px;
+  margin-top: 47.5em;
+
+  @media (max-width: 400px) {
+    height: 98px;
+    margin-top: 53.5em;
+  }
 `;
