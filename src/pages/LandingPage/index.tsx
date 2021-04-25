@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CgMenuLeftAlt } from 'react-icons/cg';
@@ -15,21 +15,17 @@ import IsMobile from '../../helpers/IsMobile';
 
 const LandingPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(0);
 
   const handleModalOpen = () => {
     setShowModal(true);
   };
 
-  useEffect(() => {
-    const { width } = window.screen;
-    setScreenWidth(width);
-  }, []);
+  const isMobile = IsMobile();
 
   return (
     <>
-      <NavBar>
-        {IsMobile() ? (
+      <NavBar isMobile>
+        {isMobile ? (
           <div className="landingPage__navBar__mobile">
             <CgMenuLeftAlt onClick={handleModalOpen} size={24} />
             <a href="/">
@@ -60,7 +56,6 @@ const LandingPage: React.FC = () => {
         )}
         {showModal && (
           <LandingPageModal
-            screenWidth={screenWidth}
             showModal={showModal}
             handleCloseLandingPageModal={() => setShowModal(false)}
           />

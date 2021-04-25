@@ -1,17 +1,55 @@
 import styled from 'styled-components';
 
-interface IisMobile {
-  isMobile: boolean;
-}
-
-export const Background = styled.div<IisMobile>`
-  justify-content: center;
-  background-color: rgba(32, 14, 100, 0.8);
-  width: 99.4vw;
+export const BackgroundMobile = styled.div`
+  background-color: #200e64;
   height: 100vh;
+  width: 100vw;
   position: absolute;
   z-index: 10;
-  top: 0;
+  top: -27px;
+
+  .backgroundMobile__link {
+    display: flex;
+    flex-flow: column-reverse;
+    text-align-last: center;
+    margin: 15px;
+    font-size: 21px;
+  }
+
+  .backgroundMobile__linkContainer {
+    margin: 202px 0 59px 0;
+  }
+  .backgroundMobile__container__loginButton {
+    margin: 24px;
+  }
+`;
+
+export const LogoContainer = styled.div`
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button,
+  .backgroundMobile__logoContainer__closeButton {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: transparent;
+    border: none;
+  }
+`;
+
+export const Background = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: rgba(32, 14, 100, 0.8);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  top: -40px;
   left: 0;
 `;
 
@@ -72,18 +110,18 @@ export const Container = styled.div`
       background-color: rgba(255, 255, 255, 0.4);
       border: 1px solid #fff;
       border-radius: 4px;
-      color: white;
+      color: #fff;
       padding-left: 28px;
 
       ::placeholder {
-        color: white;
+        color: #fff;
       }
     }
 
     .landingPageModal__container__eyeIcon {
       position: absolute;
       top: 310px;
-      right: 30px;
+      right: 70px; //This is to get the eye toggle away from auto-complete browser extentions, like Last Pass. Or else both icons would be on top of the other.
       opacity: 80%;
     }
   }

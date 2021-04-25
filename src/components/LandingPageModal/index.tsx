@@ -1,23 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { BsX } from 'react-icons/bs';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { Background, Container } from './styles';
+import {
+  Background,
+  BackgroundMobile,
+  Container,
+  LogoContainer,
+} from './styles';
+import logoEduick from '../../assets/logoEduick.svg';
+
+import IsMobile from '../../helpers/IsMobile';
 import Button from '../Button';
 
 interface IModalProps {
   showModal: boolean;
-  screenWidth: number;
   handleCloseLandingPageModal: () => void;
 }
 
 function LandingPageModal({
   showModal,
-  screenWidth,
   handleCloseLandingPageModal,
 }: IModalProps): JSX.Element {
-  const isMobile = screenWidth <= 400;
+  const isMobile = IsMobile();
 
   const [closeEye, setCloseEye] = useState(false);
 
@@ -48,62 +55,92 @@ function LandingPageModal({
 
   return (
     <>
-      <Background onClick={closeModal} isMobile={isMobile}>
-        <Container style={{ display: 'block' }}>
-          <div className="landingPageModal__container__regularTitle">
-            Get Started
-          </div>
-          <div className="landingPageModal__container__boldTitle">
-            JUST LOGIN
-          </div>
-          <div className="landingPageModal__container__inputName">
-            Username:
-            <input type="text" />
-          </div>
-          <div className="landingPageModal__container__inputName">
-            Password:
-            <input
-              className="landingPageModal__container__inputName__clearIcon"
-              type={closeEye ? 'text' : 'password'}
-              maxLength={10}
-              size={10}
-            />
-            <div className="landingPageModal__container__eyeIcon">
-              <div
-                aria-hidden="true"
-                onClick={changeEyeIcon}
-                onKeyDown={changeEyeIcon}
+      {isMobile ? (
+        <BackgroundMobile id="a" onClick={closeModal}>
+          <div>
+            <LogoContainer>
+              <img src={logoEduick} alt="Eduick logo" />
+              <button
+                className="backgroundMobile__logoContainer__closeButton"
+                type="button"
+                aria-label="Close Modal"
+                onClick={() => handleCloseLandingPageModal()}
               >
-                {closeEye ? (
-                  <AiOutlineEyeInvisible size={24} />
-                ) : (
-                  <AiOutlineEye size={24} />
-                )}
-              </div>
+                <BsX size={32} />
+              </button>
+            </LogoContainer>
+          </div>
+          <div className="backgroundMobile__linkContainer">
+            <div className="backgroundMobile__link">
+              <Link to="work">How it works</Link>
+            </div>
+            <div className="backgroundMobile__link">
+              <Link to="about">About us</Link>
             </div>
           </div>
-          <button
-            className="background__container__closeButton"
-            type="button"
-            aria-label="Close Modal"
-            onClick={() => handleCloseLandingPageModal()}
-          >
-            <BsX size={32} />
-          </button>
-          <div className="background__container__loginButton">
+          <div className="backgroundMobile__container__loginButton">
             <Link to="/dashboard">
-              <Button text="LOGIN" origin="landingPage" />
+              <Button text="GET STARTED" origin="landingPage" />
             </Link>
           </div>
-        </Container>
-      </Background>
+        </BackgroundMobile>
+      ) : (
+        <Background onClick={closeModal}>
+          <Container>
+            <div className="landingPageModal__container__regularTitle">
+              Get Started
+            </div>
+            <div className="landingPageModal__container__boldTitle">
+              JUST LOGIN
+            </div>
+            <div className="landingPageModal__container__inputName">
+              Username:
+              <input type="text" />
+            </div>
+            <div className="landingPageModal__container__inputName">
+              Password:
+              <input
+                className="landingPageModal__container__inputName__clearIcon"
+                type={closeEye ? 'text' : 'password'}
+                maxLength={10}
+                size={10}
+              />
+              <div className="landingPageModal__container__eyeIcon">
+                <div
+                  aria-hidden="true"
+                  onClick={changeEyeIcon}
+                  onKeyDown={changeEyeIcon}
+                >
+                  {closeEye ? (
+                    <AiOutlineEyeInvisible size={24} />
+                  ) : (
+                    <AiOutlineEye size={24} />
+                  )}
+                </div>
+              </div>
+            </div>
+            <button
+              className="background__container__closeButton"
+              type="button"
+              aria-label="Close Modal"
+              onClick={() => handleCloseLandingPageModal()}
+            >
+              <BsX size={32} />
+            </button>
+            <div className="background__container__loginButton">
+              <Link to="/dashboard">
+                <Button text="LOGIN" origin="landingPage" />
+              </Link>
+            </div>
+          </Container>
+        </Background>
+      )}
     </>
   );
 }
 
 LandingPageModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
-  screenWidth: PropTypes.number.isRequired,
   handleCloseLandingPageModal: PropTypes.func.isRequired,
 };
 export default LandingPageModal;

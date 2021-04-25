@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-export const NavBar = styled.div`
+interface IisMobile {
+  isMobile: boolean;
+}
+export const NavBar = styled.div<IisMobile>`
   max-width: 1131px;
   margin: auto;
 
   .landingPage__navBar__mobile {
-    margin: 27px 30px 60px 30px;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
 
     @media (max-width: 400px) {
       margin-bottom: 50px;
@@ -19,12 +24,19 @@ export const NavBar = styled.div`
   }
 
   .landingPage__navBar__desktop {
-    margin: 40px 0 142px 0;
+    margin: 40px 0 142px 38px;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
   }
 
   div {
-    display: flex;
+    display: ${({ isMobile }) => (isMobile ? '' : 'flex')};
     align-items: center;
 
     a {
@@ -32,7 +44,7 @@ export const NavBar = styled.div`
     }
 
     div {
-      margin: 0 33px;
+      margin: ${({ isMobile }) => (isMobile ? '0' : '0 33px')};
 
       Link {
         text-decoration: none;
