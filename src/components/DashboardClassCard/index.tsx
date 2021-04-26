@@ -9,8 +9,14 @@ interface ICardWriteProps {
   nameOfCourse: string;
 }
 
-function DashboardClassCard(card: ICardWriteProps): JSX.Element {
-  const fadedStars = 5 - card.stars;
+function DashboardClassCard({
+  image,
+  alt,
+  stars,
+  numberOfLessons,
+  nameOfCourse,
+}: ICardWriteProps): JSX.Element {
+  const fadedStars = 5 - stars;
   const goldStars = 5 - fadedStars;
 
   const goldStarsArray: { className: string }[] = [];
@@ -24,11 +30,11 @@ function DashboardClassCard(card: ICardWriteProps): JSX.Element {
     goldStarsArray.push({ className: 'container__goldStar' });
   }
 
-  const lessons = card.numberOfLessons > 1 ? ' LESSONS' : ' LESSON';
+  const lessons = numberOfLessons > 1 ? ' LESSONS' : ' LESSON';
 
   return (
     <Container>
-      <img src={card.image} alt={card.alt} />
+      <img src={image} alt={alt} />
       <div className="container__middleSection">
         <div>
           {goldStarsArray.map((el: { className: string }) => (
@@ -39,12 +45,10 @@ function DashboardClassCard(card: ICardWriteProps): JSX.Element {
           ))}
         </div>
         <div className="container__middleSection__lessonsNumber">
-          {card.numberOfLessons + lessons}
+          {numberOfLessons + lessons}
         </div>
       </div>
-      <div className="container__bottomSection__className">
-        {card.nameOfCourse}
-      </div>
+      <div className="container__bottomSection__className">{nameOfCourse}</div>
     </Container>
   );
 }

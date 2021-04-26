@@ -18,6 +18,10 @@ Wait for it to download and install all the files.
 After all of it, if everything went well, just type.
 - ```yarn start```
 
+This project was created with: 
+Node v15.14.0, ReactJS, Typescript, Styled Components, React Router, ESLint configured to follow Airbnb standards of code and Prettier.
+In order for it to run smooth, it's advised that you install ESLint and Prettier, both extensions of the VSCode IDE.
+
 The project will start at port 3000.
 
 ```Cheers and thank you.```
