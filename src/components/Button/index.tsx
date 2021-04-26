@@ -9,13 +9,17 @@ interface IWriteProps {
 }
 
 function Button({ origin, text, handleModalOpen }: IWriteProps): JSX.Element {
-  return origin === 'landingPage' ? (
-    <ContainerLandingPage onClick={handleModalOpen}>
-      {text}
-    </ContainerLandingPage>
-  ) : (
-    <ContainerDashboard>{text}</ContainerDashboard>
-  );
+  if (origin === 'landingPage')
+    return (
+      <ContainerLandingPage onClick={handleModalOpen}>
+        {text}
+      </ContainerLandingPage>
+    );
+
+  if (origin === 'landingPageSearch')
+    return <ContainerLandingPage>{text}</ContainerLandingPage>;
+
+  return <ContainerDashboard>{text}</ContainerDashboard>;
 }
 
 Button.defaultProps = {

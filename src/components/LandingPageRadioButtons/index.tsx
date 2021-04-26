@@ -61,7 +61,7 @@ function LandingPageRadioButtons(): JSX.Element {
             </RadioButton>
           ))}
         </div>
-        <Button origin="landingPage" text="SEARCH" />
+        <Button origin="landingPageSearch" text="SEARCH" />
       </ContainerRoleSelector>
     </>
   );

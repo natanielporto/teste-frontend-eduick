@@ -136,7 +136,7 @@ function LandingPageModal({
           <BsX size={32} />
         </button>
         <div className="background__container__loginButton">
-          <Link to="/dashboard">
+          <Link to="/dashboard" id="cypressId">
             <Button text="LOGIN" origin="landingPage" />
           </Link>
         </div>

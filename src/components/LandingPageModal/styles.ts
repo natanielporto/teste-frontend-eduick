@@ -80,7 +80,7 @@ export const Container = styled.div`
     font-family: 'Poppins', sans-serif;
 
     @media (max-width: 400px) {
-      font-size: 34px;
+      font-size: 28px;
       line-height: 33px;
     }
   }

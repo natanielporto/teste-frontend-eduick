@@ -195,6 +195,7 @@ const Dashboard: React.FC = () => {
         <section className="dashboard__midSection__cardsSection">
           {classes.map(el => (
             <DashboardClassCard
+              key={Math.random() * 10000}
               image={el.image}
               alt={el.alt}
               stars={el.stars}

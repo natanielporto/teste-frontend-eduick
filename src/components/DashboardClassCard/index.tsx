@@ -38,10 +38,10 @@ function DashboardClassCard({
       <div className="container__middleSection">
         <div>
           {goldStarsArray.map((el: { className: string }) => (
-            <FaStar className={el.className} />
+            <FaStar key={Math.random() * 500} className={el.className} />
           ))}
           {fadedStarsArray.map((el: { className: string }) => (
-            <FaRegStar className={el.className} />
+            <FaRegStar key={Math.random() * 10000} className={el.className} />
           ))}
         </div>
         <div className="container__middleSection__lessonsNumber">
