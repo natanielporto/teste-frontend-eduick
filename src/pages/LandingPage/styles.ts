@@ -32,6 +32,10 @@ export const NavBar = styled.div<IisMobile>`
     div {
       display: flex;
       align-items: center;
+
+      div {
+        margin: 3px 50px 0 50px;
+      }
     }
   }
 

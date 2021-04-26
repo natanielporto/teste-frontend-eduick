@@ -51,6 +51,10 @@ export const Background = styled.div`
   z-index: 10;
   top: -40px;
   left: 0;
+
+  @media (max-width: 400px) {
+    top: -20px;
+  }
 `;
 
 export const Container = styled.div`
@@ -63,10 +67,22 @@ export const Container = styled.div`
   padding-left: 40px;
   border-radius: 4px;
 
+  @media (max-width: 400px) {
+    min-width: 100%;
+    min-height: 100%;
+    padding-left: 25px;
+    padding-top: 24px;
+  }
+
   .landingPageModal__container__regularTitle {
     font-size: 34px;
     color: #fff;
     font-family: 'Poppins', sans-serif;
+
+    @media (max-width: 400px) {
+      font-size: 34px;
+      line-height: 33px;
+    }
   }
 
   .landingPageModal__container__boldTitle {
@@ -76,6 +92,12 @@ export const Container = styled.div`
     font-weight: 700;
     line-height: 45px;
     margin-bottom: 32px;
+
+    @media (max-width: 400px) {
+      font-size: 32px;
+      line-height: 37px;
+      margin-bottom: 37px;
+    }
   }
 
   .background__container__closeButton {
@@ -91,6 +113,12 @@ export const Container = styled.div`
     border-radius: 50%;
     border: none;
     color: #fff;
+
+    @media (max-width: 400px) {
+      background-color: transparent;
+      top: 12px;
+      right: 8px;
+    }
   }
 
   .landingPageModal__container__inputName {
@@ -98,6 +126,10 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding-right: 40px;
+
+    @media (max-width: 400px) {
+      padding-right: 25px;
+    }
 
     + div {
       margin-top: 16px;
@@ -123,13 +155,24 @@ export const Container = styled.div`
       top: 310px;
       right: 70px; //This is to get the eye toggle away from auto-complete browser extentions, like Last Pass. Or else both icons would be on top of the other.
       opacity: 80%;
+
+      @media (max-width: 400px) {
+        top: 272px;
+        right: 50px;
+      }
     }
   }
 
   .background__container__loginButton {
     display: flex;
-    justify-content: flex-end;
     margin-top: 27px;
     padding-right: 65px;
+
+    @media (max-width: 400px) {
+      display: inline-block;
+      width: 100%;
+      margin-top: 24px;
+      padding-right: 25px;
+    }
   }
 `;

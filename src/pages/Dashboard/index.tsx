@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import {
+  IoChevronUp,
+  IoChevronDown,
+  IoArrowForwardOutline,
+} from 'react-icons/io5';
 import IsMobile from '../../helpers/IsMobile';
 import Button from '../../components/Button';
 import DashboardClassCard from '../../components/DashboardClassCard';
@@ -10,6 +15,8 @@ import {
   NavBar,
   MidSection,
   NumberOfPages,
+  TeacherModeModal,
+  TeacherModeModalTextBox,
   Footer,
 } from './styles';
 
@@ -21,6 +28,12 @@ import yellowBubbles from '../../assets/yellowBubbles.svg';
 import avatar from '../../assets/avatar.svg';
 
 const Dashboard: React.FC = () => {
+  const [teacherModal, setTeacherModal] = useState(false);
+
+  const changeToTeacherMode = useCallback(() => {
+    setTeacherModal(!teacherModal);
+  }, [teacherModal]);
+
   const classes: {
     image: string;
     alt: string;
@@ -72,10 +85,16 @@ const Dashboard: React.FC = () => {
     },
   ];
 
-  const footerDisclaimerMessage = (
+  const isMobile = IsMobile();
+
+  const footerDisclaimerMessage = isMobile ? (
     <p>
-      Copyright {new Date().getFullYear()} <strong>Eduick</strong>. Todos os
-      direitos reservados.
+      Copyright &#169; {new Date().getFullYear()} <strong>Eduick</strong>.
+    </p>
+  ) : (
+    <p>
+      Copyright &#169; {new Date().getFullYear()} <strong>Eduick</strong>. Todos
+      os direitos reservados.
     </p>
   );
 
@@ -83,13 +102,38 @@ const Dashboard: React.FC = () => {
     <Body>
       <NavBarContainer>
         <NavBar>
-          {IsMobile() ? (
+          {isMobile ? (
             <div className="navBar__dashboard__mobile">
               <a href="/">
                 <h1>
                   <img src={logoEduick} alt="Eduick Logo" />
                 </h1>
               </a>
+              <div className="navBar__dashboard__mobileRightContainer">
+                <button type="button" onClick={() => changeToTeacherMode()}>
+                  {teacherModal ? (
+                    <IoChevronUp size={24} color="#2E3A59" />
+                  ) : (
+                    <IoChevronDown size={24} color="#2E3A59" />
+                  )}
+                </button>
+                <img
+                  src={avatar}
+                  alt="Student Avatar"
+                  className="navBar__dashboard__avatar"
+                />
+              </div>
+              {teacherModal && (
+                <>
+                  <TeacherModeModal />
+                  <TeacherModeModalTextBox>
+                    <span>CHANGE TO TEACHER MODE</span>
+                    <span>
+                      <IoArrowForwardOutline size={18} color="#2E3A59" />
+                    </span>
+                  </TeacherModeModalTextBox>
+                </>
+              )}
             </div>
           ) : (
             <div className="navBar__dashboard__desktop">
@@ -113,9 +157,9 @@ const Dashboard: React.FC = () => {
               <div className="navBar__dashboard__rightContainer">
                 <Button origin="Dashboard" text="CHANGE TO TEACHER MODE" />
                 <img
+                  className="navBar__dashboard__avatar"
                   src={avatar}
                   alt="Student Avatar"
-                  className="navBar__dashboard__avatar"
                 />
               </div>
             </div>
@@ -142,6 +186,7 @@ const Dashboard: React.FC = () => {
           </div>
           <div>
             <img
+              className="dashboard__midSection__rightImage"
               src={meeting}
               alt="A draw Three people sitting around a table exchanging student experiences."
             />

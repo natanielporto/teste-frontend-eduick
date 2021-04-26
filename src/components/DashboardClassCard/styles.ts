@@ -7,8 +7,16 @@ const Container = styled.div`
   color: #000;
   margin-top: 30px;
 
+  @media (max-width: 400px) {
+    width: 320px;
+  }
+
   img {
     padding: 12px 12px 18px 12px;
+
+    @media (max-width: 400px) {
+      width: 320px;
+    }
   }
 
   .container__middleSection {
