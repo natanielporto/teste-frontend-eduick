@@ -6,7 +6,7 @@ export const BackgroundMobile = styled.div`
   width: 100vw;
   position: absolute;
   z-index: 10;
-  top: -27px;
+  top: -20px;
 
   .backgroundMobile__link {
     display: flex;
@@ -45,6 +45,7 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   background-color: rgba(32, 14, 100, 0.8);
+  color: transparent;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -59,6 +60,7 @@ export const Background = styled.div`
 
 export const Container = styled.div`
   background-color: #6a40e4;
+  color: #fff;
   min-width: 525px;
   min-height: 479px;
   position: relative;
@@ -68,10 +70,11 @@ export const Container = styled.div`
   border-radius: 4px;
 
   @media (max-width: 400px) {
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 101%;
+    min-height: 102%;
     padding-left: 25px;
     padding-top: 24px;
+    left: -40px;
   }
 
   .landingPageModal__container__regularTitle {
@@ -165,6 +168,7 @@ export const Container = styled.div`
 
   .background__container__loginButton {
     display: flex;
+    justify-content: flex-end;
     margin-top: 27px;
     padding-right: 65px;
 

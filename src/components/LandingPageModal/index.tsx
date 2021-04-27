@@ -30,38 +30,36 @@ function LandingPageModal({
 
   const [hideMobileMenu, setHideMobileMenu] = useState(false);
 
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const changeEyeIcon = useCallback(() => {
     setCloseEye(!closeEye);
   }, [closeEye]);
 
   const closeModal = useCallback(
-    e => {
-      if (modalRef.current === e.target) handleCloseLandingPageModal();
+    event => {
+      const closeThisModal = event.target.innerText;
+
+      if (closeThisModal && closeThisModal.search('closeModal') === 0)
+        handleCloseLandingPageModal();
+
+      if (event.key === 'Escape' && showModal) handleCloseLandingPageModal();
     },
-    [handleCloseLandingPageModal],
+    [handleCloseLandingPageModal, showModal],
   );
 
   const setMobileMenuGetStarted = useCallback(() => {
     setHideMobileMenu(!hideMobileMenu);
   }, [hideMobileMenu]);
 
-  const keyPress = useCallback(
-    event => {
-      if (event.key === 'Escape' && showModal) handleCloseLandingPageModal();
-    },
-    [handleCloseLandingPageModal, showModal],
-  );
-
   useEffect(() => {
-    document.addEventListener('keydown', keyPress);
-    return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress]);
+    document.addEventListener('keydown', closeModal);
+    return () => document.removeEventListener('keydown', closeModal);
+  }, [closeModal]);
 
   if (isMobile && !hideMobileMenu) {
     return (
-      <BackgroundMobile id="a" onClick={closeModal}>
+      <BackgroundMobile onClick={closeModal}>
         <div>
           <LogoContainer>
             <img src={logoEduick} alt="Eduick logo" />
@@ -97,7 +95,9 @@ function LandingPageModal({
 
   return (
     <Background onClick={closeModal}>
-      <Container>
+      closeModal
+      {/* neat little trick that i've came up with to close when clicking outside without much code */}
+      <Container ref={modalRef}>
         <div className="landingPageModal__container__regularTitle">
           Get Started
         </div>
